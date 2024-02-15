@@ -17,29 +17,29 @@ if not os.path.exists('data/provinsi'):
 
 for provinsi_ in provinsi:
     kotakab = requests.get(f'{PPWP_URL}/{provinsi_["kode"]}.json').json()
-    with open(f'data/provinsi/{provinsi_["nama"]}.json', 'w', encoding='utf-8') as f:
+    with open(f'data/provinsi/{provinsi_["kode"]}.json', 'w', encoding='utf-8') as f:
         json.dump(kotakab, f, ensure_ascii=False, indent=4)
-    if not os.path.exists(f'data/provinsi/{provinsi_["nama"]}'): 
-        os.makedirs(f'data/provinsi/{provinsi_["nama"]}')
+    if not os.path.exists(f'data/provinsi/{provinsi_["kode"]}'): 
+        os.makedirs(f'data/provinsi/{provinsi_["kode"]}')
     for kotakab_ in kotakab:
         kecamatan = requests.get(f'{PPWP_URL}/{provinsi_["kode"]}/{kotakab_["kode"]}.json').json()
-        with open(f'data/provinsi/{provinsi_["nama"]}/{kotakab_["nama"]}.json', 'w', encoding='utf-8') as f:
+        with open(f'data/provinsi/{provinsi_["kode"]}/{kotakab_["kode"]}.json', 'w', encoding='utf-8') as f:
             json.dump(kecamatan, f, ensure_ascii=False, indent=4)
-        if not os.path.exists(f'data/provinsi/{provinsi_["nama"]}/{kotakab_["nama"]}'): 
-            os.makedirs(f'data/provinsi/{provinsi_["nama"]}/{kotakab_["nama"]}')
+        if not os.path.exists(f'data/provinsi/{provinsi_["kode"]}/{kotakab_["kode"]}'): 
+            os.makedirs(f'data/provinsi/{provinsi_["kode"]}/{kotakab_["kode"]}')
         for kecamatan_ in kecamatan:
             desakel = requests.get(f'{PPWP_URL}/{provinsi_["kode"]}/{kotakab_["kode"]}/{kecamatan_["kode"]}.json').json()
-            with open(f'data/provinsi/{provinsi_["nama"]}/{kotakab_["nama"]}/{kecamatan_["nama"]}.json', 'w', encoding='utf-8') as f:
+            with open(f'data/provinsi/{provinsi_["kode"]}/{kotakab_["kode"]}/{kecamatan_["kode"]}.json', 'w', encoding='utf-8') as f:
                 json.dump(desakel, f, ensure_ascii=False, indent=4)
-            if not os.path.exists(f'data/provinsi/{provinsi_["nama"]}/{kotakab_["nama"]}/{kecamatan_["nama"]}'):
-                os.makedirs(f'data/provinsi/{provinsi_["nama"]}/{kotakab_["nama"]}/{kecamatan_["nama"]}')
+            if not os.path.exists(f'data/provinsi/{provinsi_["kode"]}/{kotakab_["kode"]}/{kecamatan_["kode"]}'):
+                os.makedirs(f'data/provinsi/{provinsi_["kode"]}/{kotakab_["kode"]}/{kecamatan_["kode"]}')
             for desakel_ in desakel:
                 tps = requests.get(f'{PPWP_URL}/{provinsi_["kode"]}/{kotakab_["kode"]}/{kecamatan_["kode"]}/{desakel_["kode"]}.json').json()
-                with open(f'data/provinsi/{provinsi_["nama"]}/{kotakab_["nama"]}/{kecamatan_["nama"]}/{desakel_["nama"]}.json', 'w', encoding='utf-8') as f:
+                with open(f'data/provinsi/{provinsi_["kode"]}/{kotakab_["kode"]}/{kecamatan_["kode"]}/{desakel_["kode"]}.json', 'w', encoding='utf-8') as f:
                     json.dump(tps, f, ensure_ascii=False, indent=4)
-                if not os.path.exists(f'data/provinsi/{provinsi_["nama"]}/{kotakab_["nama"]}/{kecamatan_["nama"]}/{desakel_["nama"]}'): 
-                    os.makedirs(f'data/provinsi/{provinsi_["nama"]}/{kotakab_["nama"]}/{kecamatan_["nama"]}/{desakel_["nama"]}')
+                if not os.path.exists(f'data/provinsi/{provinsi_["kode"]}/{kotakab_["kode"]}/{kecamatan_["kode"]}/{desakel_["kode"]}'): 
+                    os.makedirs(f'data/provinsi/{provinsi_["kode"]}/{kotakab_["kode"]}/{kecamatan_["kode"]}/{desakel_["kode"]}')
                 for tps_ in tps:
                     chasil = requests.get(f'{HHCW_PPWP_URL}/{provinsi_["kode"]}/{kotakab_["kode"]}/{kecamatan_["kode"]}/{desakel_["kode"]}/{tps_["kode"]}.json').json()
-                    with open(f'data/provinsi/{provinsi_["nama"]}/{kotakab_["nama"]}/{kecamatan_["nama"]}/{desakel_["nama"]}/{tps_["nama"]}.json', 'w', encoding='utf-8') as f:
+                    with open(f'data/provinsi/{provinsi_["kode"]}/{kotakab_["kode"]}/{kecamatan_["kode"]}/{desakel_["kode"]}/{tps_["kode"]}.json', 'w', encoding='utf-8') as f:
                         json.dump(chasil, f, ensure_ascii=False, indent=4)
